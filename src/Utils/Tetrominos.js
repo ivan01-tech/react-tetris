@@ -62,5 +62,5 @@ export const TECTROMINOS = {
 export const generateTectrominos = function () {
   const letter = "LTSZIOJ";
 
-  return TECTROMINOS[letter[Math.floor(Math.random() * letter.length)]];
+  return TECTROMINOS[letter[Math.floor(Math.random() * (letter.length - 1))]];
 };

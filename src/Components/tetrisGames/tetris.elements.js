@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import img from "../assets/fond.jpg";
+import img from "../../assets/fond.jpg";
 
 export const TetrisWrapper = styled.div`
   display: flex;

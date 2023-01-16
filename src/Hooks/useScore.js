@@ -13,7 +13,7 @@ const useScore = (clearedRow) => {
 
     if (clearedRow > 0) {
       console.log("clear", clearedRow);
-      setScore(prev => prev + linePoint[clearedRow - 1] * (Level + 1))
+      setScore(prev => prev + linePoint[(clearedRow > 4 ? 4 : clearedRow) - 1] * (Level + 1))
       setRows(prev => prev + clearedRow)
     }
 

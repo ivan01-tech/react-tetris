@@ -1,16 +1,19 @@
-
 import { useCallback, useState } from "react";
 import { CELLS_PER_LIGN, checkCollisions } from "../Utils/gameHelper";
 import { generateTectrominos, TECTROMINOS } from "../Utils/Tetrominos";
 
+export const PlayerInitialState = {
+  position: { x: 0, y: 0 },
+  collided: false,
+  tectromino: TECTROMINOS["J"].shape,
+}
+
 export const usePlayer = function () {
 
   const [player, setPlayer] = useState({
-
     position: { x: 0, y: 0 },
     collided: false,
-    tectromino: TECTROMINOS[0].shape,
-
+    tectromino: TECTROMINOS.J.shape,
   });
 
   const rotateMatrix = (matrix, dir) => {
@@ -49,7 +52,7 @@ export const usePlayer = function () {
 
   const resetPlayer = useCallback(function () {
     setPlayer({
-      position: { x: CELLS_PER_LIGN / 2 - 2, y: 0 },
+      position: { x: (CELLS_PER_LIGN / 2) - 2, y: 0 },
       collided: false,
       tectromino: generateTectrominos().shape,
     });

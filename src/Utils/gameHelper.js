@@ -6,6 +6,17 @@ export const createStage = () =>
     new Array(CELLS_PER_LIGN).fill([0, "clear"])
   );
 
+export const createFillStage = (shape) =>
+  Array.from(Array(CELLS_PER_COLUNM), () =>
+    new Array(CELLS_PER_LIGN).fill([0, "O"])
+  )
+/**
+ * ckeck if tectrominos collided
+ * @param {Array[]} stage 
+ * @param { { position: { x: number, y: number },collided:boolean,tectromino:[][]}} player 
+ * @param {{x:number,y:number}} param2 
+ * @returns 
+ */
 export const checkCollisions = (stage, player, { x: moveX, y: moveY }) => {
   for (let y = 0; y < player.tectromino.length; y++) {
     for (let x = 0; x < player.tectromino[0].length; x++) {
@@ -16,10 +27,10 @@ export const checkCollisions = (stage, player, { x: moveX, y: moveY }) => {
           !stage[y + player.position.y + moveY] ||
           // we should'nt go throught the width of the stage
           !stage[y + player.position.y + moveY][
-            moveX + player.position.x + x
+          moveX + player.position.x + x
           ] ||
           stage[y + player.position.y + moveY][
-            moveX + player.position.x + x
+          moveX + player.position.x + x
           ][1] !== "clear"
           // we should make sure that the actual cell is'nt "clear"
         ) {

@@ -1,17 +1,17 @@
 // Components
-import Stage from "./Stages/Stage";
-import Dispaly from "./Dispay/Display";
+import Stage from "../Stages/Stage";
+import Dispaly from "../Dispay/Display";
 
 // Helpers Functions
 import { TetrisRow, TetrisWrapper } from "./tetris.elements.js";
-import { createStage, checkCollisions } from "../Utils/gameHelper";
+import { createStage, checkCollisions } from "../../Utils/gameHelper";
 
 // Hooks
 import { useState } from "react";
-import { usePlayer } from "../Hooks/usePalyer";
-import { useStage } from "../Hooks/useStage";
-import useInterval from "../Hooks/useSetInterval";
-import useScore from "../Hooks/useScore";
+import { usePlayer } from "../../Hooks/usePalyer";
+import { useStage } from "../../Hooks/useStage";
+import useInterval from "../../Hooks/useSetInterval";
+import useScore from "../../Hooks/useScore";
 
 function TetrisCame() {
   const [dropDownTime, setDropDownTime] = useState(null);
@@ -19,7 +19,6 @@ function TetrisCame() {
 
   const { player, resetPlayer, rotatePlayer, updatePlayerPos } = usePlayer();
   const { stage, setStage, clearedRows } = useStage(player, resetPlayer);
-  console.log("clerrazzz", clearedRows);
   const { setScore, setLevel, setRows, rows, Level, score } = useScore(
     clearedRows - 1
   );

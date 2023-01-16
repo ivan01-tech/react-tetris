@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "../Buttons/Button";
-import StarButton from "../StartButton";
+import StarButton from "../StartButton/StartButton";
 import { DisplayWrapper } from "./display.elements.js";
 
 function Display({ startGame, gameOver, rows, Level, score }) {
