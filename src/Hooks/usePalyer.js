@@ -25,13 +25,18 @@ export const usePlayer = function () {
     else
       return transP.reverse()
   }
-
+  /**
+   * change the position of the player in the stage
+   * @param {[[]]} stage 
+   * @param {Number} dir 
+   * @returns 
+   */
   function rotatePlayer(stage, dir) {
 
     const copyPlayer = JSON.parse(JSON.stringify(player))
 
     copyPlayer.tectromino = rotateMatrix(copyPlayer.tectromino, dir)
-
+    // console.log(copyPlayer);
     const pos = copyPlayer.position.x
     let offset = 1
 
@@ -46,6 +51,7 @@ export const usePlayer = function () {
       }
 
     }
+    // console.log(copyPlayer);
 
     setPlayer(copyPlayer)
   }

@@ -27,7 +27,6 @@ describe('usePlayers unique test suite', () => {
 	it('resetPlayer', () => {
 
 		const { result } = renderHook(usePlayer)
-		console.log(result.current.player.tectromino)
 		act(function () {
 			result.current.updatePlayerPos({ x: 2, y: 1, collided: false })
 		})
@@ -50,33 +49,38 @@ describe('usePlayers unique test suite', () => {
 
 
 	});
+	it("should transform this [[1,2],[3,4]] to that [[3,1],[4,2]]", function () {
+		const { result } = renderHook(usePlayer)
+		let matrix
+		act(function () {
+			matrix = result.current.rotateMatrix([[1, 2], [3, 4]], 1)
+		})
+		expect(matrix).toEqual([[3, 1], [4, 2]])
+	})
+
+	it("should transform this [[1,2],[3,4]] to that [[2,4],[1,3]]", function () {
+		const { result } = renderHook(usePlayer)
+		let matrix
+		act(function () {
+			matrix = result.current.rotateMatrix([[1, 2], [3, 4]], -1)
+		})
+		expect(matrix).toEqual([[2, 4], [1, 3]])
+	})
 
 
 	it('rotatePlayer', () => {
-
+		// TODO not completed
 		const { result } = renderHook(usePlayer)
-		console.log(result.current.player.tectromino)
 
 		act(function () {
-			result.current.rotatePlayer(createStage(),)
+			result.current.rotatePlayer(createStage(), 1)
 		})
 
 		expect(result.current.player).toEqual(expect.objectContaining({
-			position: { x: 2, y: 1 },
-			collided: false,
-			tectromino: TECTROMINOS.J.shape
+			collided: false, tectromino: expect.arrayContaining([["J", 0, 0], ["J", "J", "J"], [0, 0, 0]]), position: { x: 0, y: 0 }
 		}))
 
-		act(function () {
-			result.current.resetPlayer()
-		})
-
-		expect(result.current.player).toEqual(expect.objectContaining({
-			position: { x: (CELLS_PER_LIGN / 2) - 2, y: 0 },
-			collided: false,
-			tectromino: TECTROMINOS.J.shape
-		}))
-
+		expect(result.current.player.tectromino).toEqual(expect.arrayContaining([["J", 0, 0], ["J", "J", "J"], [0, 0, 0]]))
 
 	});
 
