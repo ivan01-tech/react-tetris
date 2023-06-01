@@ -9,8 +9,7 @@
 }
 
 body {
-  background: url("/fond.jpg");
-  background: url("/fond.jpg");
+  background: url("./assets/fond.jpg");
   background-size: cover;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
